@@ -1,19 +1,14 @@
-echo '==== Begin create root pair ===='
 mypass=123456
-mkdir root
-cd root
 mkdir certs crl newcerts private
 chmod 700 private
 touch index.txt
 echo 1000 > serial
-cp ../openssl.cnf .
 
 # curl https://jamielinux.com/docs/openssl-certificate-authority/_downloads/root-config.txt > openssl.cnf
 
 openssl genrsa -aes256 \
 	-passout pass:$mypass \
 	-out private/ca.key.pem 4096
-# supplied password
 
 chmod 400 private/ca.key.pem
 
